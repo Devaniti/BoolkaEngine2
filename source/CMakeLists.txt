@@ -1,0 +1,25 @@
+cmake_minimum_required(VERSION 3.27)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+project(BoolkaEngine2)
+
+add_subdirectory(external)
+add_subdirectory(common)
+add_subdirectory(hardware_info)
+add_subdirectory(memory_manager)
+add_subdirectory(allocator)
+add_subdirectory(filesystem)
+add_subdirectory(threading)
+add_subdirectory(rg_parser)
+add_subdirectory(work_graph_solver)
+add_subdirectory(work_graph)
+add_subdirectory(work_graph_generated)
+add_subdirectory(render_graph_solver)
+add_subdirectory(render_graph)
+add_subdirectory(render_graph_generated)
+add_subdirectory(bootstrap)
+
+set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT Bootstrap)
