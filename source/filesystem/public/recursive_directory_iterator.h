@@ -22,7 +22,7 @@ class RecursiveDirectoryIterator {
   [[nodiscard]] bool operator==(
       const RecursiveDirectoryIterator& other) const noexcept;
 
-  [[nodiscard]] RecursiveDirectoryIterator& operator++();
+  RecursiveDirectoryIterator& operator++();
 
  private:
   // Each element may be directory, file or something else entirely
