@@ -2,13 +2,11 @@
 
 #include "memory_block.h"
 
-namespace Filesystem
-{
+namespace Filesystem {
 
-	class FileIO
-	{
-    public:
-        static MemoryManager::MemoryBlock ReadFile(const std::filesystem::path& path);
-    };
+class FileIO {
+ public:
+  static MemoryManager::MemoryBlock ReadFile(const std::filesystem::path& path);
+};
 
-}
+}  // namespace Filesystem

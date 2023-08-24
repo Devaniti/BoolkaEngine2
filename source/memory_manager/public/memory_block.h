@@ -1,12 +1,10 @@
 #pragma once
 
-namespace MemoryManager
-{
+namespace MemoryManager {
 
-    struct MemoryBlock
-    {
-        void* data;
-        size_t size;
-    };
+struct MemoryBlock {
+  void* data;
+  size_t size;
+};
 
-}
+}  // namespace MemoryManager

@@ -1,13 +1,12 @@
 #pragma once
 
-#include <vector>
-#include <stdint.h>
 #include <bit>
+#include <cctype>
 #include <filesystem>
 #include <fstream>
 #include <ios>
-#include <cctype>
+#include <stdint.h>
+#include <vector>
 
 #include "Windows.h"
-
 #include "helpers.h"

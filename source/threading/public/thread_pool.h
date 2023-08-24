@@ -2,13 +2,13 @@
 
 #include "thread.h"
 
-class ThreadPool
-{
-public:
-	ThreadPool();
-	~ThreadPool();
+class ThreadPool {
+ public:
+  ThreadPool();
+  ~ThreadPool();
 
-	bool Initialize(void (*entrypoint)(void*), void* parameters);
-private:
-	Thread* threads;
+  bool Initialize(void (*entrypoint)(void*), void* parameters);
+
+ private:
+  Thread* threads;
 };
