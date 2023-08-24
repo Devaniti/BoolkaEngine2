@@ -202,6 +202,6 @@ SpacesInSquareBrackets: false
 Standard:        Auto
 StatementAttributeLikeMacros:
 StatementMacros:
-TabWidth:        4
+TabWidth:        2
 UseTab:          Never
 WhitespaceSensitiveMacros: []
