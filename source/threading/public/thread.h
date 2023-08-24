@@ -12,8 +12,11 @@ class Thread {
   Thread& operator=(const Thread&) = delete;
   Thread& operator=(Thread&&) = delete;
 
-  bool Initialize(uint64_t affinity, void (*entrypoint)(void*),
+  bool Initialize(uint64_t affinity, void (*entrypoint)(Thread*, void*),
                   void* parameters);
+
+  uint64_t GetAffinity() const;
+  DWORD GetThreadID() const;
 
  private:
   static DWORD WINAPI EntryPointWrapperStatic(void* parameters);
@@ -21,7 +24,7 @@ class Thread {
 
   HANDLE thread;
   uint64_t affinity;
-  void (*entrypoint)(void*);
+  void (*entrypoint)(Thread*, void*);
   void* user_parameters;
   DWORD thread_id;
 };

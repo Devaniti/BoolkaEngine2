@@ -14,7 +14,8 @@ ThreadPool::~ThreadPool() {
   }
 }
 
-bool ThreadPool::Initialize(void (*entrypoint)(void*), void* parameters) {
+bool ThreadPool::Initialize(void (*entrypoint)(Thread*, void*),
+                            void* parameters) {
   uint32_t core_count =
       HardwareInfo::HardwareInfo::GetProcessAffinityCoreCount();
   uint64_t affinity_mask = HardwareInfo::HardwareInfo::GetProcessAffinityMask();

@@ -9,7 +9,7 @@ class ThreadPool {
   ThreadPool();
   ~ThreadPool();
 
-  bool Initialize(void (*entrypoint)(void*), void* parameters);
+  bool Initialize(void (*entrypoint)(Thread*, void*), void* parameters);
 
  private:
   Thread* threads;

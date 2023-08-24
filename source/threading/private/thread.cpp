@@ -13,11 +13,12 @@ Thread::Thread()
 
 Thread::~Thread() {
   if (thread) {
-    WaitForSingleObject(thread, INFINITE);
+    ::WaitForSingleObject(thread, INFINITE);
+    ::CloseHandle(thread);
   }
 }
 
-bool Thread::Initialize(uint64_t affinity, void (*entrypoint)(void*),
+bool Thread::Initialize(uint64_t affinity, void (*entrypoint)(Thread*, void*),
                         void* parameters) {
   affinity = affinity;
   entrypoint = entrypoint;
@@ -29,6 +30,10 @@ bool Thread::Initialize(uint64_t affinity, void (*entrypoint)(void*),
   return thread != NULL;
 }
 
+uint64_t Thread::GetAffinity() const { return affinity; }
+
+DWORD Thread::GetThreadID() const { return thread_id; }
+
 DWORD Thread::EntryPointWrapperStatic(void* parameters) {
   Thread* thread = static_cast<Thread*>(parameters);
   thread->EntryPointWrapper();
@@ -37,10 +42,10 @@ DWORD Thread::EntryPointWrapperStatic(void* parameters) {
 
 void Thread::EntryPointWrapper() {
   HANDLE current_thread = GetCurrentThread();
-  SetThreadAffinityMask(current_thread, affinity);
-  SwitchToThread();
+  ::SetThreadAffinityMask(current_thread, GetAffinity());
+  ::SwitchToThread();
 
-  entrypoint(user_parameters);
+  entrypoint(this, user_parameters);
 }
 
 }  // namespace Threading
