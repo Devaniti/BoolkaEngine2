@@ -2,6 +2,8 @@
 
 #include "thread.h"
 
+namespace Threading {
+
 Thread::Thread()
     : thread(NULL),
       affinity(0),
@@ -40,3 +42,5 @@ void Thread::EntryPointWrapper() {
 
   entrypoint(user_parameters);
 }
+
+}  // namespace Threading

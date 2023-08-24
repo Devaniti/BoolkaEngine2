@@ -1,5 +1,7 @@
 #pragma once
 
+namespace Threading {
+
 class Thread {
  public:
   Thread();
@@ -23,3 +25,5 @@ class Thread {
   void* user_parameters;
   DWORD thread_id;
 };
+
+}  // namespace Threading

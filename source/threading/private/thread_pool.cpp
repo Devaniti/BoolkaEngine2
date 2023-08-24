@@ -4,6 +4,8 @@
 
 #include "hardware_info.h"
 
+namespace Threading {
+
 ThreadPool::ThreadPool() : threads(nullptr) {}
 
 ThreadPool::~ThreadPool() {
@@ -28,3 +30,5 @@ bool ThreadPool::Initialize(void (*entrypoint)(void*), void* parameters) {
 
   return true;
 }
+
+}  // namespace Threading

@@ -2,6 +2,8 @@
 
 #include "thread.h"
 
+namespace Threading {
+
 class ThreadPool {
  public:
   ThreadPool();
@@ -12,3 +14,5 @@ class ThreadPool {
  private:
   Thread* threads;
 };
+
+}  // namespace Threading

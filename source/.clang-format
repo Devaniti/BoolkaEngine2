@@ -98,11 +98,14 @@ IncludeCategories:
   - Regex:           '^"(global_)?precompiled_header\.h"'
     Priority:        -1
     SortPriority:    0
+  - Regex:           '^<.*\.h>'
+    Priority:        2
+    SortPriority:    0
   - Regex:           '^<.*>'
     Priority:        1
     SortPriority:    0
   - Regex:           '^".*"'
-    Priority:        2
+    Priority:        3
     SortPriority:    0
 IncludeIsMainRegex: ''
 IncludeIsMainSourceRegex: ''
