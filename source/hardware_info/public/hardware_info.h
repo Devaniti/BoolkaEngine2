@@ -26,17 +26,17 @@ class HardwareInfo {
   static void InitializeMemoryParameters();
 
   // Threading parameters
-  static uint32_t cpu_core_count;
-  static uint32_t process_affinity_core_count;
-  static uint64_t process_affinity_mask;
+  static uint32_t cpu_core_count_;
+  static uint32_t process_affinity_core_count_;
+  static uint64_t process_affinity_mask_;
 
   // Memory parameters
-  static uint64_t memory_size;
-  static uint32_t page_size;
-  static uint32_t allocation_granularity;
+  static uint64_t memory_size_;
+  static uint32_t page_size_;
+  static uint32_t allocation_granularity_;
 
 #ifdef BLK_HARDWARE_INFO_DEBUG
-  static bool is_initialized;
+  static bool is_initialized_;
 #endif
 };
 }  // namespace HardwareInfo

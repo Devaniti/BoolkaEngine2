@@ -13,7 +13,8 @@ MemoryManager::MemoryBlock FileIO::ReadFile(const std::filesystem::path& path) {
 
   std::ifstream input_stream;
   input_stream.open(path, std::ios::binary);
-  input_stream.read((char*)result.data, result.size);
+  input_stream.read(static_cast<char*>(result.data),
+                    static_cast<std::streamsize>(result.size));
   return result;
 }
 

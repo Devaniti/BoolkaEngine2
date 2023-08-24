@@ -23,11 +23,11 @@ class LinearAllocator {
   T* Emplace(Args... args);
 
  private:
-  void* start;
-  void* current_end;
+  void* start_;
+  void* current_end_;
 #ifdef BLK_LINEAR_ALLOCATOR_DEBUG
   // We only need end for detecting overflow
-  void* end;
+  void* end_;
 #endif
 };
 

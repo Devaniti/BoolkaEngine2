@@ -7,49 +7,49 @@
 namespace Allocator {
 
 LinearAllocator::LinearAllocator(size_t max_size) noexcept
-    : start(MemoryManager::MemoryAllocator::Allocate(max_size)),
-      current_end(start)
+    : start_(MemoryManager::MemoryAllocator::Allocate(max_size)),
+      current_end_(start_)
 #ifdef BLK_LINEAR_ALLOCATOR_DEBUG
       ,
-      end((char*)start + max_size)
+      end_(static_cast<char*>(start_) + max_size)
 #endif
 {
 }
 
 LinearAllocator::LinearAllocator(LinearAllocator&& other) noexcept
-    : start(other.start),
-      current_end(other.current_end)
+    : start_(other.start_),
+      current_end_(other.current_end_)
 #ifdef BLK_LINEAR_ALLOCATOR_DEBUG
       ,
-      end(other.end)
+      end_(other.end_)
 #endif
 {
   // Make sure other wasn't already move to something else
-  BLK_ASSERT(other.start != nullptr);
-  other.start = nullptr;
+  BLK_ASSERT(other.start_ != nullptr);
+  other.start_ = nullptr;
 }
 
 void* LinearAllocator::Allocate(size_t size) noexcept {
   // Make sure we aren't trying to allocate after moving this object to
   // something else
-  BLK_ASSERT(start != nullptr);
-  void* result = current_end;
-  current_end = (char*)current_end + size;
+  BLK_ASSERT(start_ != nullptr);
+  void* result = current_end_;
+  current_end_ = static_cast<char*>(current_end_) + size;
 
 #ifdef BLK_LINEAR_ALLOCATOR_DEBUG
   // Overflow
-  BLK_ASSERT(current_end <= end);
+  BLK_ASSERT(current_end_ <= end_);
 #endif
 
   return result;
 }
 
-void LinearAllocator::Reset() noexcept { current_end = start; }
+void LinearAllocator::Reset() noexcept { current_end_ = start_; }
 
 LinearAllocator::~LinearAllocator() noexcept {
   // If this object was moved to something else start is nullptr
-  if (start != nullptr) {
-    MemoryManager::MemoryAllocator::Release(start);
+  if (start_ != nullptr) {
+    MemoryManager::MemoryAllocator::Release(start_);
   }
 }
 

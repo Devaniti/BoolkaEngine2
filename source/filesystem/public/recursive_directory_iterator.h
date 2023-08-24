@@ -5,9 +5,9 @@ namespace Filesystem {
 class RecursiveDirectoryIterator {
  public:
   RecursiveDirectoryIterator() noexcept;
-  RecursiveDirectoryIterator(const std::filesystem::path& path,
-                             bool iterate_directories = false,
-                             bool iterate_files = true);
+  explicit RecursiveDirectoryIterator(const std::filesystem::path& path,
+                                      bool iterate_directories = false,
+                                      bool iterate_files = true);
   ~RecursiveDirectoryIterator() = default;
 
   RecursiveDirectoryIterator(const RecursiveDirectoryIterator& other) = default;
@@ -32,15 +32,15 @@ class RecursiveDirectoryIterator {
   // Matches current iterator to user's request
   bool IsSuitable();
 
-  std::filesystem::recursive_directory_iterator internal_iterator;
-  bool iterate_directories;
-  bool iterate_files;
+  std::filesystem::recursive_directory_iterator internal_iterator_;
+  bool iterate_directories_;
+  bool iterate_files_;
 };
 
 // begin/end required for range based for
 [[nodiscard]] RecursiveDirectoryIterator begin(
     RecursiveDirectoryIterator iterator) noexcept;
 [[nodiscard]] RecursiveDirectoryIterator end(
-    RecursiveDirectoryIterator) noexcept;
+    const RecursiveDirectoryIterator&) noexcept;
 
 }  // namespace Filesystem

@@ -4,7 +4,7 @@ namespace Threading {
 
 class Thread {
  public:
-  Thread();
+  Thread() = default;
   ~Thread();
 
   Thread(const Thread&) = delete;
@@ -14,19 +14,20 @@ class Thread {
 
   bool Initialize(uint64_t affinity, void (*entrypoint)(Thread*, void*),
                   void* parameters);
+  void Join();
 
-  uint64_t GetAffinity() const;
-  DWORD GetThreadID() const;
+  [[nodiscard]] uint64_t GetAffinity() const;
+  [[nodiscard]] DWORD GetThreadID() const;
 
  private:
   static DWORD WINAPI EntryPointWrapperStatic(void* parameters);
   void EntryPointWrapper();
 
-  HANDLE thread;
-  uint64_t affinity;
-  void (*entrypoint)(Thread*, void*);
-  void* user_parameters;
-  DWORD thread_id;
+  HANDLE thread_{nullptr};
+  uint64_t affinity_{0};
+  void (*entrypoint_)(Thread*, void*){nullptr};
+  void* user_parameters_{nullptr};
+  DWORD thread_id_{0};
 };
 
 }  // namespace Threading

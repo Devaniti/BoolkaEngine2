@@ -6,12 +6,10 @@
 
 namespace RGParser {
 
-using namespace Allocator;
-
 class Parser {
  public:
   [[nodiscard]] static Element* Parse(const MemoryManager::MemoryBlock& data,
-                                      LinearAllocator& allocator);
+                                      Allocator::LinearAllocator& allocator);
 };
 
 }  // namespace RGParser

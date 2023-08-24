@@ -6,22 +6,17 @@
 
 namespace Threading {
 
-ThreadPool::ThreadPool() : threads(nullptr) {}
+ThreadPool::ThreadPool() = default;
 
-ThreadPool::~ThreadPool() {
-  if (threads != nullptr) {
-    delete[] threads;
-  }
-}
+ThreadPool::~ThreadPool() { delete[] threads_; }
 
 bool ThreadPool::Initialize(void (*entrypoint)(Thread*, void*),
                             void* parameters) {
-  uint32_t core_count =
-      HardwareInfo::HardwareInfo::GetProcessAffinityCoreCount();
+  thread_count_ = HardwareInfo::HardwareInfo::GetProcessAffinityCoreCount();
   uint64_t affinity_mask = HardwareInfo::HardwareInfo::GetProcessAffinityMask();
 
-  threads = new Thread[core_count];
-  auto i = threads;
+  threads_ = new Thread[thread_count_];
+  auto* i = threads_;
 
   while (affinity_mask) {
     uint64_t mask = affinity_mask & -affinity_mask;
@@ -31,5 +26,13 @@ bool ThreadPool::Initialize(void (*entrypoint)(Thread*, void*),
 
   return true;
 }
+
+void ThreadPool::Join() {
+  for (Thread* i = threads_; i < threads_ + thread_count_; ++i) {
+    i->Join();
+  }
+}
+
+uint32_t ThreadPool::GetThreadCount() const { return thread_count_; }
 
 }  // namespace Threading
