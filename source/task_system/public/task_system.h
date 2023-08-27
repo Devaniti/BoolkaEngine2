@@ -6,7 +6,7 @@
 #include "thread.h"
 #include "thread_pool.h"
 
-namespace TaskSystem {
+namespace BoolkaEngine::TaskSystem {
 class TaskSystem {
  public:
   TaskSystem() = default;
@@ -37,4 +37,4 @@ class TaskSystem {
   int32_t idle_threads_{0};
   bool is_shutting_down_{false};
 };
-}  // namespace TaskSystem
+}  // namespace BoolkaEngine::TaskSystem

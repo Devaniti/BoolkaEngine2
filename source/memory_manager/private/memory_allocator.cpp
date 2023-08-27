@@ -2,10 +2,10 @@
 
 #include "memory_allocator.h"
 
-namespace MemoryManager {
+namespace BoolkaEngine::MemoryManager {
 
 void* MemoryAllocator::Allocate(size_t size) noexcept { return malloc(size); }
 
 void MemoryAllocator::Release(void* adress) noexcept { free(adress); }
 
-}  // namespace MemoryManager
+}  // namespace BoolkaEngine::MemoryManager

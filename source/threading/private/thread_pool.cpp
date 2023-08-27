@@ -4,7 +4,7 @@
 
 #include "hardware_info.h"
 
-namespace Threading {
+namespace BoolkaEngine::Threading {
 
 ThreadPool::ThreadPool() = default;
 
@@ -35,4 +35,4 @@ void ThreadPool::Join() {
 
 uint32_t ThreadPool::GetThreadCount() const { return thread_count_; }
 
-}  // namespace Threading
+}  // namespace BoolkaEngine::Threading

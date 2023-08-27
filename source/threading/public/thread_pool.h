@@ -2,7 +2,7 @@
 
 #include "thread.h"
 
-namespace Threading {
+namespace BoolkaEngine::Threading {
 
 class ThreadPool {
  public:
@@ -24,4 +24,4 @@ class ThreadPool {
   uint32_t thread_count_{0};
 };
 
-}  // namespace Threading
+}  // namespace BoolkaEngine::Threading

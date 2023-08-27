@@ -2,7 +2,7 @@
 
 #include "memory_api.h"
 
-namespace MemoryManager {
+namespace BoolkaEngine::MemoryManager {
 
 void* MemoryAPI::Allocate(size_t size) noexcept {
   return VirtualAlloc(nullptr, size, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
@@ -25,4 +25,4 @@ void MemoryAPI::Decommit(void* adress, size_t size) noexcept {
   VirtualFree(adress, size, MEM_DECOMMIT);
 }
 
-}  // namespace MemoryManager
+}  // namespace BoolkaEngine::MemoryManager

@@ -1,6 +1,6 @@
 #pragma once
 
-namespace MemoryManager {
+namespace BoolkaEngine::MemoryManager {
 class MemoryAPI {
  public:
   // Reserves and commits memory
@@ -15,4 +15,4 @@ class MemoryAPI {
   // Only decommits memory
   static void Decommit(void* adress, size_t size) noexcept;
 };
-}  // namespace MemoryManager
+}  // namespace BoolkaEngine::MemoryManager

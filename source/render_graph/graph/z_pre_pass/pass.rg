@@ -1,3 +1,3 @@
-Pass ZPrePass
+Pass ZPrePass {
     Command Draw
-        Geometry BatchScene
+}

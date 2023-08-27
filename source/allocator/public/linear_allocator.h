@@ -4,7 +4,7 @@
 #define BLK_LINEAR_ALLOCATOR_DEBUG
 #endif
 
-namespace Allocator {
+namespace BoolkaEngine::Allocator {
 class LinearAllocator {
  public:
   explicit LinearAllocator(size_t max_size) noexcept;
@@ -31,6 +31,6 @@ class LinearAllocator {
 #endif
 };
 
-}  // namespace Allocator
+}  // namespace BoolkaEngine::Allocator
 
 #include "linear_allocator.hpp"

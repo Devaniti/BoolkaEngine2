@@ -6,7 +6,7 @@
 #define BLK_HARDWARE_INFO_DEBUG
 #endif
 
-namespace HardwareInfo {
+namespace BoolkaEngine::HardwareInfo {
 class HardwareInfo {
  public:
   static void Initialize();
@@ -39,4 +39,4 @@ class HardwareInfo {
   static bool is_initialized_;
 #endif
 };
-}  // namespace HardwareInfo
+}  // namespace BoolkaEngine::HardwareInfo

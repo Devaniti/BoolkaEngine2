@@ -4,7 +4,7 @@
 #include "linear_allocator.h"
 #include "memory_block.h"
 
-namespace RGParser {
+namespace BoolkaEngine::RGParser {
 
 class Parser {
  public:
@@ -12,4 +12,4 @@ class Parser {
                                       Allocator::LinearAllocator& allocator);
 };
 
-}  // namespace RGParser
+}  // namespace BoolkaEngine::RGParser

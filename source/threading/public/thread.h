@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Threading {
+namespace BoolkaEngine::Threading {
 
 class Thread {
  public:
@@ -30,4 +30,4 @@ class Thread {
   DWORD thread_id_{0};
 };
 
-}  // namespace Threading
+}  // namespace BoolkaEngine::Threading

@@ -2,7 +2,7 @@
 
 #include "task_system.h"
 
-namespace TaskSystem {
+namespace BoolkaEngine::TaskSystem {
 
 TaskSystem::~TaskSystem() { Join(); }
 
@@ -74,4 +74,4 @@ void TaskSystem::TaskLoop() {
   }
 }
 
-}  // namespace TaskSystem
+}  // namespace BoolkaEngine::TaskSystem

@@ -1,10 +1,10 @@
 #pragma once
 
-namespace MemoryManager {
+namespace BoolkaEngine::MemoryManager {
 
 struct MemoryBlock {
   void* data;
   size_t size;
 };
 
-}  // namespace MemoryManager
+}  // namespace BoolkaEngine::MemoryManager

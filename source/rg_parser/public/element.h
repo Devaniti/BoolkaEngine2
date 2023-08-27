@@ -1,6 +1,6 @@
 #pragma once
 
-namespace RGParser {
+namespace BoolkaEngine::RGParser {
 
 // This struct does not own memory
 struct Element {
@@ -10,4 +10,4 @@ struct Element {
   Element** subelements;
 };
 
-}  // namespace RGParser
+}  // namespace BoolkaEngine::RGParser

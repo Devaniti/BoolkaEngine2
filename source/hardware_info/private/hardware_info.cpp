@@ -2,7 +2,7 @@
 
 #include "hardware_info.h"
 
-namespace HardwareInfo {
+namespace BoolkaEngine::HardwareInfo {
 
 uint32_t HardwareInfo::cpu_core_count_ = 0;
 uint32_t HardwareInfo::process_affinity_core_count_ = 0;
@@ -94,4 +94,4 @@ void HardwareInfo::InitializeMemoryParameters() {
   memory_size_ = memory_status.ullTotalPhys;
 }
 
-}  // namespace HardwareInfo
+}  // namespace BoolkaEngine::HardwareInfo

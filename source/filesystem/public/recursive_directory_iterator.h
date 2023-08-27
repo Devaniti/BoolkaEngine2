@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Filesystem {
+namespace BoolkaEngine::Filesystem {
 
 class RecursiveDirectoryIterator {
  public:
@@ -43,4 +43,4 @@ class RecursiveDirectoryIterator {
 [[nodiscard]] RecursiveDirectoryIterator end(
     const RecursiveDirectoryIterator&) noexcept;
 
-}  // namespace Filesystem
+}  // namespace BoolkaEngine::Filesystem

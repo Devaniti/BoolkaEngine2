@@ -2,7 +2,7 @@
 
 #include "thread.h"
 
-namespace Threading {
+namespace BoolkaEngine::Threading {
 
 Thread::~Thread() {
   if (thread_) {
@@ -48,4 +48,4 @@ void Thread::EntryPointWrapper() {
   entrypoint_(this, user_parameters_);
 }
 
-}  // namespace Threading
+}  // namespace BoolkaEngine::Threading

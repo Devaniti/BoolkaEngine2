@@ -4,7 +4,7 @@
 
 #include "memory_allocator.h"
 
-namespace Filesystem {
+namespace BoolkaEngine::Filesystem {
 
 MemoryManager::MemoryBlock FileIO::ReadFile(const std::filesystem::path& path) {
   MemoryManager::MemoryBlock result{};
@@ -18,4 +18,4 @@ MemoryManager::MemoryBlock FileIO::ReadFile(const std::filesystem::path& path) {
   return result;
 }
 
-}  // namespace Filesystem
+}  // namespace BoolkaEngine::Filesystem

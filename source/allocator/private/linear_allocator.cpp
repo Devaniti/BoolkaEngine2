@@ -4,7 +4,7 @@
 
 #include "memory_allocator.h"
 
-namespace Allocator {
+namespace BoolkaEngine::Allocator {
 
 LinearAllocator::LinearAllocator(size_t max_size) noexcept
     : start_(MemoryManager::MemoryAllocator::Allocate(max_size)),
@@ -53,4 +53,4 @@ LinearAllocator::~LinearAllocator() noexcept {
   }
 }
 
-}  // namespace Allocator
+}  // namespace BoolkaEngine::Allocator

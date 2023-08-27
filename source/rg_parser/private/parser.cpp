@@ -2,7 +2,7 @@
 
 #include "parser.h"
 
-namespace RGParser {
+namespace BoolkaEngine::RGParser {
 
 class ParserInternal {
  public:
@@ -170,4 +170,4 @@ Element* Parser::Parse(const MemoryManager::MemoryBlock& data,
   return parser.Parse(data, allocator);
 }
 
-}  // namespace RGParser
+}  // namespace BoolkaEngine::RGParser

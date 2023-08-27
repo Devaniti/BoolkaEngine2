@@ -2,7 +2,7 @@
 
 #include "recursive_directory_iterator.h"
 
-namespace Filesystem {
+namespace BoolkaEngine::Filesystem {
 
 RecursiveDirectoryIterator::RecursiveDirectoryIterator() noexcept
     : iterate_directories_(false), iterate_files_(false) {}
@@ -60,4 +60,4 @@ RecursiveDirectoryIterator end(const RecursiveDirectoryIterator&) noexcept {
   return RecursiveDirectoryIterator();
 }
 
-}  // namespace Filesystem
+}  // namespace BoolkaEngine::Filesystem
