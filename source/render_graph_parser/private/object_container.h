@@ -2,12 +2,10 @@
 
 #include "precompiled_header.h"
 
-#include "variable.h"
+#include "resources/resource.h"
 
 namespace BoolkaEngine::RenderGraphParser {
-struct Texture {
-  const char* format;
-  Variable* resolution;
-  float4 optimized_clear_value;
+struct ObjectContainer {
+  std::vector<std::pair<std::string, Resource>> resources;
 };
 }  // namespace BoolkaEngine::RenderGraphParser

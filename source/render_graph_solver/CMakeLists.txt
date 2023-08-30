@@ -15,4 +15,4 @@ target_precompile_headers(RenderGraphSolver
 set_source_files_properties(${HeaderList} PROPERTIES HEADER_FILE_ONLY TRUE)
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${SourceList} ${HeaderList})
 
-target_link_libraries(RenderGraphSolver Common Allocator Filesystem RGParser TaskSystem RenderGraphParser)
+target_link_libraries(RenderGraphSolver Common Allocator Filesystem TaskSystem RenderGraphParser)

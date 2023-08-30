@@ -2,8 +2,10 @@
 
 #include "precompiled_header.h"
 
-#include "texture.h"
-
 namespace BoolkaEngine::RenderGraphParser {
-struct Texture3D : public Texture {};
+struct Texture3D{
+  const char* format;
+  Variable* resolution;
+  float4 optimized_clear_value;
+};
 }  // namespace BoolkaEngine::RenderGraphParser

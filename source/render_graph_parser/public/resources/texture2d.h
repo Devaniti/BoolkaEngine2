@@ -2,10 +2,11 @@
 
 #include "precompiled_header.h"
 
-#include "texture.h"
-
 namespace BoolkaEngine::RenderGraphParser {
-struct Texture2D : public Texture {
-  const char* slice_count;
+struct Texture2D {
+  const char* format;
+  Variable* resolution;
+  float4 optimized_clear_value;
+  const Variable* slice_count;
 };
 }  // namespace BoolkaEngine::RenderGraphParser

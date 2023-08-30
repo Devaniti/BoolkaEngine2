@@ -1,3 +1,0 @@
-Pass ZPrePass {
-    Command Draw
-}

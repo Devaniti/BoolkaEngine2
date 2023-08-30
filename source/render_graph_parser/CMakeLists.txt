@@ -7,9 +7,12 @@ add_library(RenderGraphParser STATIC
 add_dependencies(RenderGraphParser RenderGraphParserGenerator)
 
 target_include_directories(RenderGraphParser
-    PUBLIC public
-    PRIVATE private
-    PRIVATE ${RenderGraphParserGenerator_INCLUDE_DIR}
+  PUBLIC public
+  PRIVATE private
+)
+
+target_include_directories(RenderGraphParser SYSTEM
+  PRIVATE ${RenderGraphParserGenerator_INCLUDE_DIR}
 )
 
 target_precompile_headers(RenderGraphParser
@@ -21,6 +24,4 @@ set_source_files_properties(${AutogenList} PROPERTIES SKIP_PRECOMPILE_HEADERS ON
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${SourceList} ${HeaderList})
 source_group(autogen FILES ${AutogenList})
 
-target_link_libraries(RenderGraphParser 
-  Common Allocator Filesystem RGParser TaskSystem 
-  antlr4_static)
+target_link_libraries(RenderGraphParser Common Allocator Filesystem TaskSystem antlr4_static)

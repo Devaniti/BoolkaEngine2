@@ -1,29 +1,35 @@
-Resource Texture2D ZBuffer {
+Resource ZBuffer {
+	Type Texture2D
 	Resolution RenderResolution
 	Format D32_FLOAT
 }
 
-Resource Texture2D GBufferA {
+Resource GBufferA {
+	Type Texture2D
 	Resolution RenderResolution
 	Format R16G16B16A16_FLOAT
 }
 
-Resource Texture2D GBufferB {
+Resource GBufferB {
+	Type Texture2D
 	Resolution RenderResolution
 	Format R16G16B16A16_FLOAT
 }
 
-Resource Texture2D LightBuffer {
+Resource LightBuffer {
+	Type Texture2D
 	Resolution RenderResolution
 	Format R16G16B16A16_FLOAT
 }
 
-Resource Texture2D UpscaleOutput {
+Resource UpscaleOutput {
+	Type Texture2D
 	Resolution UpscaleResolution
 	Format R16G16B16A16_FLOAT
 }
 
-Resource Texture2D DisplayOutput {
+Resource DisplayOutput {
+	Type Texture2D
 	Resolution OutputResolution
 	Format R16G16B16A16_FLOAT
 }

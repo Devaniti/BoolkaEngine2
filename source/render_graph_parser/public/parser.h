@@ -9,6 +9,6 @@ namespace BoolkaEngine::RenderGraphParser {
 class Parser {
  public:
   static RenderGraph* Parse(const char* source_folder,
-                     Allocator::LinearAllocator& allocator);
+                            Allocator::LinearAllocator& allocator);
 };
 }  // namespace BoolkaEngine::RenderGraphParser

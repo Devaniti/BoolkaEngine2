@@ -24,6 +24,7 @@ Checks: >
   -bugprone-implicit-widening-of-multiplication-result,
   -bugprone-unchecked-optional-access
 
+UseColor: true
 HeaderFilterRegex: ".*\\.h(pp)?$"
 
 CheckOptions:
