@@ -9,5 +9,9 @@ antlr_target(RenderGraphParserGeneratorParser grammar/render_graph_parser.g4 PAR
     COMPILE_FLAGS -lib ${ANTLR_RenderGraphParserGeneratorLexer_OUTPUT_DIR})
 
 set(RenderGraphParserGenerator_OUTPUTS ${ANTLR_RenderGraphParserGeneratorLexer_CXX_OUTPUTS} ${ANTLR_RenderGraphParserGeneratorParser_CXX_OUTPUTS} PARENT_SCOPE)
-add_custom_target(RenderGraphParserGenerator DEPENDS ${ANTLR_RenderGraphParserGeneratorLexer_OUTPUTS} ${ANTLR_RenderGraphParserGeneratorParser_OUTPUTS})
+add_custom_target(RenderGraphParserGenerator 
+    DEPENDS ${ANTLR_RenderGraphParserGeneratorLexer_OUTPUTS} ${ANTLR_RenderGraphParserGeneratorParser_OUTPUTS}
+    SOURCES ${SourceList})
 set(RenderGraphParserGenerator_INCLUDE_DIR ${ANTLR_RenderGraphParserGeneratorLexer_OUTPUT_DIR} ${ANTLR_RenderGraphParserGeneratorParser_OUTPUT_DIR} PARENT_SCOPE)
+
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${SourceList})
