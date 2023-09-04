@@ -1,7 +1,5 @@
 #pragma once
 
-#include "precompiled_header.h"
-
 #ifdef BLK_DEBUG
 #define BLK_HARDWARE_INFO_DEBUG
 #endif

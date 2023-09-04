@@ -1,7 +1,5 @@
 #pragma once
 
-#include "precompiled_header.h"
-
 #include "buffer.h"
 #include "texture1d.h"
 #include "texture2d.h"

@@ -1,7 +1,5 @@
 #pragma once
 
-#include "precompiled_header.h"
-
 namespace BoolkaEngine::TaskSystem {
 
 class TaskSystem;

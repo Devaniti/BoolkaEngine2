@@ -1,7 +1,5 @@
 #pragma once
 
-#include "precompiled_header.h"
-
 #include "task.h"
 #include "thread.h"
 #include "thread_pool.h"

@@ -7,8 +7,6 @@
 const char* source_folder = nullptr;
 const char* dest_folder = nullptr;
 
-using namespace BoolkaEngine;
-
 int main(int argc, char* argv[]) {
   if (argc != 3) {
     std::cerr << "Not enough arguments. Expected 2, Got " << (argc - 1)
@@ -19,6 +17,19 @@ int main(int argc, char* argv[]) {
   source_folder = argv[1];
   dest_folder = argv[2];
 
-  Allocator::LinearAllocator allocator(32 * 1024);
-  RenderGraphParser::Parser::Parse(source_folder, allocator);
+  BoolkaEngine::RenderGraphParser::RenderGraph* graph =
+      BoolkaEngine::RenderGraphParser::Parser::Parse(source_folder);
+
+  std::cout << "Variables" << std::endl;
+  for (const auto& var : graph->variables) {
+    std::cout << var.first << " - " << static_cast<int>(var.second.format)
+              << " " << static_cast<int>(var.second.update_frequency)
+              << std::endl;
+  }
+
+  std::cout << "Resources" << std::endl;
+  for (const auto& var : graph->resources) {
+    std::cout << var.first << " - " << static_cast<int>(var.second.type)
+              << std::endl;
+  }
 }

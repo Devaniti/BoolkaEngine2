@@ -12,7 +12,7 @@ target_include_directories(RenderGraphParser
 )
 
 target_include_directories(RenderGraphParser SYSTEM
-  PRIVATE ${RenderGraphParserGenerator_INCLUDE_DIR}
+PRIVATE ${RenderGraphParserGenerator_INCLUDE_DIR}
 )
 
 target_precompile_headers(RenderGraphParser

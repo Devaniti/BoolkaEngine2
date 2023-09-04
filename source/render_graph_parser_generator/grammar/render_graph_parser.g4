@@ -11,7 +11,7 @@ object: resource | variable | shader | pso;
 resource: RESOURCE ID OPEN_BRACKET resourceBody CLOSE_BRACKET;
 
 resourceBody:
-	typeDeclaration resolutionDeclaration? resourceFormatDeclaration? optimizedClearValueDeclaration
+	typeDeclaration resourceFormatDeclaration? resolutionDeclaration? optimizedClearValueDeclaration
 		? sliceCountDeclaration? sizeDeclaration?;
 
 variable: VARIABLE ID OPEN_BRACKET variableBody CLOSE_BRACKET;

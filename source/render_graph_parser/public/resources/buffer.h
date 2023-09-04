@@ -1,13 +1,11 @@
 #pragma once
 
-#include "precompiled_header.h"
-
-#include "format.h"
-#include "variable.h"
+#include "resource_format.h"
+#include "variables/variable.h"
 
 namespace BoolkaEngine::RenderGraphParser {
 struct Buffer {
-  Format format;
-  Variable* size;
+  ResourceFormat format;
+  const Variable* size;
 };
 }  // namespace BoolkaEngine::RenderGraphParser

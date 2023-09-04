@@ -1,9 +1,7 @@
 #pragma once
 
-#include "precompiled_header.h"
-
 namespace BoolkaEngine::RenderGraphParser {
-enum class Format {
+enum class ResourceFormat {
   // Only valid for buffers
   None = 0,
 
@@ -62,4 +60,6 @@ enum class Format {
   R32G32_SINT,
   R32G32B32A32_SINT,
 };
+
+ResourceFormat ToResourceFormat(size_t token);
 }  // namespace BoolkaEngine::RenderGraphParser

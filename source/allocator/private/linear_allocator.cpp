@@ -24,9 +24,24 @@ LinearAllocator::LinearAllocator(LinearAllocator&& other) noexcept
       end_(other.end_)
 #endif
 {
-  // Make sure other wasn't already move to something else
+  // Make sure other wasn't already moved to something else
   BLK_ASSERT(other.start_ != nullptr);
   other.start_ = nullptr;
+}
+
+LinearAllocator& LinearAllocator::operator=(LinearAllocator&& other) noexcept {
+  if (start_ != nullptr) {
+    MemoryManager::MemoryAllocator::Release(start_);
+  }
+
+  // Make sure other wasn't already moved to something else
+  BLK_ASSERT(other.start_ != nullptr);
+  start_ = other.start_;
+  current_end_ = other.current_end_;
+
+  other.start_ = nullptr;
+
+  return *this;
 }
 
 void* LinearAllocator::Allocate(size_t size) noexcept {

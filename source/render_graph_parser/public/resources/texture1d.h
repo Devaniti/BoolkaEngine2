@@ -1,12 +1,13 @@
 #pragma once
 
-#include "precompiled_header.h"
+#include "resource_format.h"
+#include "variables/variable.h"
 
 namespace BoolkaEngine::RenderGraphParser {
 struct Texture1D {
-  const char* format;
-  Variable* resolution;
-  float4 optimized_clear_value;
-  const char* slice_count;
+  ResourceFormat format;
+  const Variable* resolution;
+  const Variable* optimized_clear_value;
+  const Variable* slice_count;
 };
 }  // namespace BoolkaEngine::RenderGraphParser
