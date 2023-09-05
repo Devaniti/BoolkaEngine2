@@ -10,6 +10,7 @@ class BaseAllocator {
   virtual void* Allocate(size_t size) noexcept = 0;
 
   char* DuplicateString(const char* src);
+  char* DuplicateString(const std::string& src);
 
   template <typename T, typename... Args>
   T* Emplace(Args&&... args);

@@ -12,14 +12,10 @@ Texture3D Texture3DParser::Parse(
   return Texture3D{
       .format = ToResourceFormat(Antlr4Helper::GetToken(
           context->resourceFormatDeclaration()->resourceFormatValue())),
-      .resolution = Antlr4Helper::AllocateFakeVariable(
-          parser_context, context->resolutionDeclaration()->ID()->getText()),
-      .optimized_clear_value =
-          (context->optimizedClearValueDeclaration()
-               ? Antlr4Helper::AllocateFakeVariable(
-                     parser_context,
-                     context->optimizedClearValueDeclaration()->ID()->getText())
-               : nullptr)};
+      .resolution_name = Antlr4Helper::GetID(
+          parser_context, context->resolutionDeclaration(), false),
+      .optimized_clear_value_name = Antlr4Helper::GetID(
+          parser_context, context->optimizedClearValueDeclaration())};
 }
 
 }  // namespace BoolkaEngine::RenderGraphParser

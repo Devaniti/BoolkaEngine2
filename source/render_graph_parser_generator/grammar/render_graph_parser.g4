@@ -117,4 +117,4 @@ variableFormatValue:
 	| FLOAT3
 	| FLOAT4;
 
-updateFrequencyValue: STALL | FRAME;
+updateFrequencyValue: CONST | STALL | FRAME;

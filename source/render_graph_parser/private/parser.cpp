@@ -16,6 +16,7 @@
 #include "resources/resource_parser.h"
 #include "task.h"
 #include "task_system.h"
+#include "variables/variable_parser.h"
 
 namespace BoolkaEngine::RenderGraphParser {
 
@@ -27,6 +28,12 @@ class ParserVisitor : public render_graph_parserBaseVisitor {
   std::any visitResource(
       render_graph_parser::ResourceContext* context) override {
     ResourceParser::Parse(graph_, parser_context_, context);
+    return std::any();
+  }
+
+  std::any visitVariable(
+      render_graph_parser::VariableContext* context) override {
+    VariableParser::Parse(graph_, parser_context_, context);
     return std::any();
   }
 
@@ -47,15 +54,16 @@ RenderGraph* Parser::Parse(const char* source_folder) {
 
   auto* result =
       graph_allocator.Emplace<RenderGraph>(std::move(graph_allocator));
+  ParserContext parser_context;
 
-  ParseFiles(source_folder, result);
+  ParseFiles(source_folder, result, parser_context);
+  LinkupStep(result);
 
   return result;
 }
 
-void Parser::ParseFiles(const char* source_folder, RenderGraph* graph) {
-  ParserContext parser_context;
-
+void Parser::ParseFiles(const char* source_folder, RenderGraph* graph,
+                        ParserContext& parser_context) {
   for (const auto& file :
        Filesystem::RecursiveDirectoryIterator(source_folder)) {
     std::cout << std::endl << file << std::endl << "-------------" << std::endl;

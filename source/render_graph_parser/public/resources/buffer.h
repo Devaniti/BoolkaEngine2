@@ -6,6 +6,9 @@
 namespace BoolkaEngine::RenderGraphParser {
 struct Buffer {
   ResourceFormat format;
-  const Variable* size;
+  union {
+    const Variable* size;
+    const char* size_name;
+  };
 };
 }  // namespace BoolkaEngine::RenderGraphParser

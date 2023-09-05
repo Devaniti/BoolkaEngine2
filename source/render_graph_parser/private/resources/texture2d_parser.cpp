@@ -12,20 +12,12 @@ Texture2D Texture2DParser::Parse(
   return Texture2D{
       .format = ToResourceFormat(Antlr4Helper::GetToken(
           context->resourceFormatDeclaration()->resourceFormatValue())),
-      .resolution = Antlr4Helper::AllocateFakeVariable(
-          parser_context, context->resolutionDeclaration()->ID()->getText()),
-      .optimized_clear_value =
-          (context->optimizedClearValueDeclaration()
-               ? Antlr4Helper::AllocateFakeVariable(
-                     parser_context,
-                     context->optimizedClearValueDeclaration()->ID()->getText())
-               : nullptr),
-      .slice_count =
-          (context->sliceCountDeclaration()
-               ? Antlr4Helper::AllocateFakeVariable(
-                     parser_context,
-                     context->sliceCountDeclaration()->ID()->getText())
-               : nullptr)};
+      .resolution_name = Antlr4Helper::GetID(
+          parser_context, context->resolutionDeclaration(), false),
+      .optimized_clear_value_name = Antlr4Helper::GetID(
+          parser_context, context->optimizedClearValueDeclaration()),
+      .slice_count_name = Antlr4Helper::GetID(
+          parser_context, context->sliceCountDeclaration())};
 }
 
 }  // namespace BoolkaEngine::RenderGraphParser

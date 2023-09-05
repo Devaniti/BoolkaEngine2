@@ -6,8 +6,20 @@
 namespace BoolkaEngine::RenderGraphParser {
 struct Texture2D {
   ResourceFormat format;
-  const Variable* resolution;
-  const Variable* optimized_clear_value;
-  const Variable* slice_count;
+
+  union {
+    const Variable* resolution;
+    const char* resolution_name;
+  };
+
+  union {
+    const Variable* optimized_clear_value;
+    const char* optimized_clear_value_name;
+  };
+
+  union {
+    const Variable* slice_count;
+    const char* slice_count_name;
+  };
 };
 }  // namespace BoolkaEngine::RenderGraphParser

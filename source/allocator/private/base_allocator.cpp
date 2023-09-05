@@ -13,4 +13,15 @@ char* BaseAllocator::DuplicateString(const char* src) {
 
   return result;
 }
+
+char* BaseAllocator::DuplicateString(const std::string& src) {
+  size_t required_size = src.length() + 1;
+  char* result = static_cast<char*>(Allocate(required_size));
+
+  // Copy together with null terminator
+  std::memcpy(result, src.c_str(), required_size);
+
+  return result;
+}
+
 }  // namespace BoolkaEngine::Allocator

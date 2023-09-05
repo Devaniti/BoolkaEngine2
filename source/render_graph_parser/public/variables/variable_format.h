@@ -2,9 +2,6 @@
 
 namespace BoolkaEngine::RenderGraphParser {
 enum class VariableFormat {
-  // Invalid value
-  None = 0,
-
   Uint,
   Uint2,
   Uint3,

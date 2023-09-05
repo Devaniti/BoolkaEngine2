@@ -11,10 +11,4 @@ size_t Antlr4Helper::GetToken(antlr4::ParserRuleContext* context) {
   return node->getSymbol()->getType();
 }
 
-Variable* Antlr4Helper::AllocateFakeVariable(ParserContext& parser_context,
-                                             const std::string& name) {
-  return reinterpret_cast<Variable*>(
-      parser_context.scratch_memory.DuplicateString(name.c_str()));
-}
-
 }  // namespace BoolkaEngine::RenderGraphParser

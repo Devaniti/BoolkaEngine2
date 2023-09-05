@@ -99,6 +99,7 @@ FLOAT4: 'float4';
 
 // Update frequencies
 
+CONST: 'Const';
 STALL: 'Stall';
 FRAME: 'Frame';
 
