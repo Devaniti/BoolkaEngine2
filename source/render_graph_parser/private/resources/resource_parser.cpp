@@ -12,10 +12,11 @@ namespace BoolkaEngine::RenderGraphParser {
 void ResourceParser::Parse(RenderGraph& graph, ParserContext& parser_context,
                            render_graph_parser::ResourceContext* context) {
   std::string name = context->ID()->getText();
-  Resource result = ParseObjectBody(parser_context, context->resourceBody());
+  auto* result = graph.allocator.Emplace<Resource>(
+      ParseObjectBody(parser_context, context->resourceBody()));
 
-  graph.resources.emplace_back(graph.allocator.DuplicateString(name.c_str()),
-                               result);
+  graph.resources.emplace(graph.allocator.DuplicateString(name.c_str()),
+                          result);
 }
 
 ResourceType ResourceParser::ParseType(
@@ -61,6 +62,26 @@ Resource ResourceParser::ParseObjectBody(
   }
 
   return result;
+}
+
+void ResourceParser::Linkup(const RenderGraph& graph, Resource& resource) {
+  switch (resource.type) {
+    case ResourceType::Buffer:
+      BufferParser::Linkup(graph, resource.buffer);
+      break;
+    case ResourceType::Texture1D:
+      Texture1DParser::Linkup(graph, resource.texture1D);
+      break;
+    case ResourceType::Texture2D:
+      Texture2DParser::Linkup(graph, resource.texture2D);
+      break;
+    case ResourceType::Texture3D:
+      Texture3DParser::Linkup(graph, resource.texture3D);
+      break;
+    default:
+      assert(0);
+      break;
+  }
 }
 
 }  // namespace BoolkaEngine::RenderGraphParser

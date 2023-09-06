@@ -4,8 +4,8 @@
 
 namespace BoolkaEngine::RenderGraphParser {
 
-RenderGraph::RenderGraph() noexcept : allocator(16 * 1024) {}
-RenderGraph::RenderGraph(Allocator::LinearAllocator&& allocator) noexcept
+RenderGraph::RenderGraph() : allocator(16 * 1024) {}
+RenderGraph::RenderGraph(Allocator::LinearAllocator&& allocator)
     : allocator(std::move(allocator)) {}
 
 }  // namespace BoolkaEngine::RenderGraphParser

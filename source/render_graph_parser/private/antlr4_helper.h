@@ -3,6 +3,7 @@
 #include <render_graph_parser.h>
 
 #include "parser_context.h"
+#include "render_graph.h"
 #include "variables/variable.h"
 
 namespace BoolkaEngine::RenderGraphParser {
@@ -12,6 +13,8 @@ class Antlr4Helper {
   template <typename T>
   static const char* GetID(ParserContext& parser_context, T* src,
                            bool allow_null = true);
+  static Variable* GetVariable(const RenderGraph& graph, const char* name,
+                               bool allow_null = true);
 };
 
 }  // namespace BoolkaEngine::RenderGraphParser

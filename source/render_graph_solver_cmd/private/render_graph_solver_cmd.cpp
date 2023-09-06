@@ -22,14 +22,14 @@ int main(int argc, char* argv[]) {
 
   std::cout << "Variables" << std::endl;
   for (const auto& var : graph->variables) {
-    std::cout << var.first << " - " << static_cast<int>(var.second.format)
-              << " " << static_cast<int>(var.second.update_frequency)
+    std::cout << var.first << " - " << static_cast<int>(var.second->format)
+              << " " << static_cast<int>(var.second->update_frequency)
               << std::endl;
   }
 
   std::cout << "Resources" << std::endl;
   for (const auto& var : graph->resources) {
-    std::cout << var.first << " - " << static_cast<int>(var.second.type)
+    std::cout << var.first << " - " << static_cast<int>(var.second->type)
               << std::endl;
   }
 }

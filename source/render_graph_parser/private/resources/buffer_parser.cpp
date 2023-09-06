@@ -17,4 +17,8 @@ Buffer BufferParser::Parse(ParserContext& parser_context,
                     parser_context, context->sizeDeclaration(), false)};
 }
 
+void BufferParser::Linkup(const RenderGraph& graph, Buffer& buffer) {
+  buffer.size = Antlr4Helper::GetVariable(graph, buffer.size_name, false);
+}
+
 }  // namespace BoolkaEngine::RenderGraphParser

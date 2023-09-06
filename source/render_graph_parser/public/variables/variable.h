@@ -6,6 +6,7 @@
 namespace BoolkaEngine::RenderGraphParser {
 
 struct Variable {
+  const char* name;
   VariableFormat format;
   VariableUpdateFrequency update_frequency;
 };

@@ -18,4 +18,11 @@ Texture3D Texture3DParser::Parse(
           parser_context, context->optimizedClearValueDeclaration())};
 }
 
+void Texture3DParser::Linkup(const RenderGraph& graph, Texture3D& texture) {
+  texture.resolution =
+      Antlr4Helper::GetVariable(graph, texture.resolution_name, false);
+  texture.optimized_clear_value =
+      Antlr4Helper::GetVariable(graph, texture.optimized_clear_value_name);
+}
+
 }  // namespace BoolkaEngine::RenderGraphParser

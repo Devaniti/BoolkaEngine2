@@ -11,6 +11,7 @@ class ResourceParser {
  public:
   static void Parse(RenderGraph& graph, ParserContext& parser_context,
                     render_graph_parser::ResourceContext* context);
+  static void Linkup(const RenderGraph& graph, Resource& resource);
 
  private:
   static ResourceType ParseType(

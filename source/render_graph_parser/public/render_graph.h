@@ -6,11 +6,11 @@
 
 namespace BoolkaEngine::RenderGraphParser {
 struct RenderGraph {
-  RenderGraph() noexcept;
-  explicit RenderGraph(Allocator::LinearAllocator&& allocator) noexcept;
+  RenderGraph();
+  explicit RenderGraph(Allocator::LinearAllocator&& allocator);
 
-  std::vector<std::pair<const char*, Variable>> variables;
-  std::vector<std::pair<const char*, Resource>> resources;
+  std::unordered_map<std::string_view, Variable*> variables;
+  std::unordered_map<std::string_view, Resource*> resources;
   Allocator::LinearAllocator allocator;
 };
 }  // namespace BoolkaEngine::RenderGraphParser

@@ -7,6 +7,7 @@
 #include <fstream>
 #include <ios>
 #include <queue>
+#include <unordered_map>
 #include <vector>
 
 // Special windows specific stuff

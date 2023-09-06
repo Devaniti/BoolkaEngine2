@@ -7,11 +7,11 @@
 namespace BoolkaEngine::RenderGraphParser {
 void VariableParser::Parse(RenderGraph& graph, ParserContext& parser_context,
                            render_graph_parser::VariableContext* context) {
-  std::string name = context->ID()->getText();
-  Variable result = ParseObjectBody(parser_context, context->variableBody());
+  auto* result = graph.allocator.Emplace<Variable>(
+      ParseObjectBody(parser_context, context->variableBody()));
+  result->name = graph.allocator.DuplicateString(context->ID()->getText());
 
-  graph.variables.emplace_back(graph.allocator.DuplicateString(name.c_str()),
-                               result);
+  graph.variables.emplace(result->name, result);
 }
 
 BoolkaEngine::RenderGraphParser::Variable VariableParser::ParseObjectBody(

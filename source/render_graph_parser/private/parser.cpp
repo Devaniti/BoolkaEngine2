@@ -81,6 +81,10 @@ void Parser::ParseFiles(const char* source_folder, RenderGraph* graph,
   }
 }
 
-void Parser::LinkupStep(RenderGraph* graph) {}
+void Parser::LinkupStep(RenderGraph* graph) {
+  for (const auto& [name, resource] : graph->resources) {
+    ResourceParser::Linkup(*graph, *resource);
+  }
+}
 
 }  // namespace BoolkaEngine::RenderGraphParser
