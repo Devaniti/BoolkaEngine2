@@ -1,13 +1,13 @@
 find_package(Java 11.0 COMPONENTS Runtime REQUIRED)
 
 file(DOWNLOAD https://www.antlr.org/download/antlr-4.13.0-complete.jar
-    "$ENV{TMP}/antlr-4.13.0-complete.jar"
+    "${CMAKE_CURRENT_BINARY_DIR}/antlr4/antlr-4.13.0-complete.jar"
     EXPECTED_HASH SHA256=bc6f4abc0d225a27570126c51402569f000a8deda3487b70e7642840e570e4a6
     )
 
 find_program(ANTLR_EXECUTABLE
     NAMES antlr-4.13.0-complete.jar
-    PATHS "$ENV{TMP}/"
+    PATHS "${CMAKE_CURRENT_BINARY_DIR}/antlr4/"
     REQUIRED)
 
 macro(ANTLR_TARGET Name InputFile)

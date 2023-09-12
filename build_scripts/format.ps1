@@ -1,3 +1,5 @@
+#!/usr/bin/pwsh
+
 Push-Location $PSScriptRoot
 Get-ChildItem -Path ../source -Include ('*.cpp','*.h','*.hpp') -File -Recurse -Exclude external | 
     Where-Object {$_.DirectoryName -notlike '*external*'} |
