@@ -65,6 +65,8 @@ uint32_t HardwareInfo::GetAllocationGranularity() {
   return allocation_granularity_;
 }
 
+#if defined(_WIN32) || defined(WIN32)
+
 void HardwareInfo::InitializeThreadingParameters() {
 #ifdef BLK_HARDWARE_INFO_DEBUG
   BLK_ASSERT(!is_initialized_);
@@ -93,5 +95,36 @@ void HardwareInfo::InitializeMemoryParameters() {
   GlobalMemoryStatusEx(&memory_status);
   memory_size_ = memory_status.ullTotalPhys;
 }
+
+#elif defined(__unix__)
+
+void HardwareInfo::InitializeThreadingParameters() {
+#ifdef BLK_HARDWARE_INFO_DEBUG
+  BLK_ASSERT(!is_initialized_);
+#endif
+  cpu_core_count_ = sysconf(_SC_NPROCESSORS_CONF);
+  cpu_set_t mask{};
+  sched_getaffinity(0, sizeof(mask), &mask);
+  process_affinity_mask_ = *(uint64_t*)(&mask);
+  process_affinity_core_count_ = std::popcount(process_affinity_mask_);
+}
+
+void HardwareInfo::InitializeMemoryParameters() {
+#ifdef BLK_HARDWARE_INFO_DEBUG
+  BLK_ASSERT(!is_initialized_);
+#endif
+  struct sysinfo mem_info;
+  sysinfo(&mem_info);
+
+  memory_size_ = mem_info.totalram * mem_info.mem_unit;
+  page_size_ = sysconf(_SC_PAGESIZE);
+  allocation_granularity_ =
+      sysconf(_SC_PAGESIZE);  // In Linux, allocation granularity is often the
+                              // same as the page size
+}
+
+#else
+#error Unknown platform
+#endif
 
 }  // namespace BoolkaEngine::HardwareInfo

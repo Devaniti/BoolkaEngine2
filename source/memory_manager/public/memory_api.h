@@ -11,7 +11,7 @@ class MemoryAPI {
   static void Commit(void* adress, size_t size) noexcept;
 
   // Decommits and unreserves memory
-  static void Release(void* adress) noexcept;
+  static void Release(void* adress, size_t size) noexcept;
   // Only decommits memory
   static void Decommit(void* adress, size_t size) noexcept;
 };

@@ -17,17 +17,25 @@ class Thread {
   void Join();
 
   [[nodiscard]] uint64_t GetAffinity() const;
-  [[nodiscard]] DWORD GetThreadID() const;
+  [[nodiscard]] uint64_t GetThreadID() const;
 
  private:
-  static DWORD WINAPI EntryPointWrapperStatic(void* parameters);
   void EntryPointWrapper();
 
-  HANDLE thread_{nullptr};
   uint64_t affinity_{0};
   void (*entrypoint_)(Thread*, void*){nullptr};
   void* user_parameters_{nullptr};
+
+#if defined(_WIN32) || defined(WIN32) 
+  static DWORD WINAPI EntryPointWrapperStatic(void* parameters);
+  HANDLE thread_{nullptr};
   DWORD thread_id_{0};
+#elif __unix__
+  static void* EntryPointWrapperStatic(void* parameters);
+  pthread_t thread_;
+#else
+#error Unknown platform
+#endif
 };
 
 }  // namespace BoolkaEngine::Threading
