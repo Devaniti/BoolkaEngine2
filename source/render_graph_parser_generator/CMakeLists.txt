@@ -5,8 +5,7 @@ set(SourceList
 antlr_target(RenderGraphParserGeneratorLexer grammar/render_graph_lexer.g4 LEXER
     )
 antlr_target(RenderGraphParserGeneratorParser grammar/render_graph_parser.g4 PARSER VISITOR
-    DEPENDS_ANTLR RenderGraphParserGeneratorLexer
-    COMPILE_FLAGS -lib ${ANTLR_RenderGraphParserGeneratorLexer_OUTPUT_DIR})
+    DEPENDS_ANTLR RenderGraphParserGeneratorLexer)
 
 set(RenderGraphParserGenerator_OUTPUTS ${ANTLR_RenderGraphParserGeneratorLexer_CXX_OUTPUTS} ${ANTLR_RenderGraphParserGeneratorParser_CXX_OUTPUTS} PARENT_SCOPE)
 add_custom_target(RenderGraphParserGenerator 

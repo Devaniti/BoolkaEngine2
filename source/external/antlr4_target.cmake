@@ -20,7 +20,8 @@ cmake_parse_arguments(ANTLR_TARGET
                         "${ANTLR_MULTI_VALUE_ARGS}"
                         ${ARGN})
 
-set(ANTLR_${Name}_INPUT ${InputFile})
+get_filename_component(AbsoluteInputFile "${InputFile}" ABSOLUTE)
+set(ANTLR_${Name}_INPUT ${AbsoluteInputFile})
 
 get_filename_component(ANTLR_INPUT ${InputFile} NAME_WE)
 
@@ -78,10 +79,8 @@ list(APPEND ANTLR_${Name}_OUTPUTS ${ANTLR_${Name}_CXX_OUTPUTS})
 
 if(ANTLR_TARGET_DEPENDS_ANTLR)
     if(ANTLR_${ANTLR_TARGET_DEPENDS_ANTLR}_INPUT)
-    list(APPEND ANTLR_TARGET_DEPENDS
-            ${ANTLR_${ANTLR_TARGET_DEPENDS_ANTLR}_INPUT})
-    list(APPEND ANTLR_TARGET_DEPENDS
-            ${ANTLR_${ANTLR_TARGET_DEPENDS_ANTLR}_OUTPUTS})
+    list(APPEND ANTLR_TARGET_DEPENDS ${ANTLR_${ANTLR_TARGET_DEPENDS_ANTLR}_OUTPUTS})
+    list(APPEND ANTLR_TARGET_COMPILE_FLAGS -lib ${ANTLR_${ANTLR_TARGET_DEPENDS_ANTLR}_OUTPUT_DIR})
     else()
     message(SEND_ERROR
             "ANTLR target '${ANTLR_TARGET_DEPENDS_ANTLR}' not found")
@@ -91,7 +90,7 @@ endif()
 add_custom_command(
     OUTPUT ${ANTLR_${Name}_OUTPUTS}
     COMMAND ${Java_JAVA_EXECUTABLE} -jar ${ANTLR_EXECUTABLE}
-            ${InputFile}
+            ${AbsoluteInputFile}
             -o ${ANTLR_${Name}_OUTPUT_DIR}
             -no-listener
             -Dlanguage=Cpp
