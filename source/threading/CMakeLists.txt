@@ -4,12 +4,12 @@ file(GLOB_RECURSE HeaderList CONFIGURE_DEPENDS *.h *.hpp)
 add_library(Threading STATIC ${SourceList} ${HeaderList})
 
 target_include_directories(Threading
-    PUBLIC Public
-    PRIVATE Private
+    PUBLIC public
+    PRIVATE private
 )
 
 target_precompile_headers(Threading
-    PUBLIC Public/precompiled_header.h
+    PUBLIC public/precompiled_header.h
 )
 
 set_source_files_properties(${HeaderList} PROPERTIES HEADER_FILE_ONLY TRUE)
