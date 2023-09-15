@@ -14,6 +14,7 @@
 #include "parser_context.h"
 #include "recursive_directory_iterator.h"
 #include "resources/resource_parser.h"
+#include "shaders/shader_parser.h"
 #include "task.h"
 #include "task_system.h"
 #include "variables/variable_parser.h"
@@ -34,6 +35,11 @@ class ParserVisitor : public render_graph_parserBaseVisitor {
   std::any visitVariable(
       render_graph_parser::VariableContext* context) override {
     VariableParser::Parse(graph_, parser_context_, context);
+    return std::any();
+  }
+
+  std::any visitShader(render_graph_parser::ShaderContext* context) override {
+    ShaderParser::Parse(graph_, parser_context_, context);
     return std::any();
   }
 
@@ -66,8 +72,6 @@ void Parser::ParseFiles(const char* source_folder, RenderGraph* graph,
                         ParserContext& parser_context) {
   for (const auto& file :
        Filesystem::RecursiveDirectoryIterator(source_folder)) {
-    std::cout << std::endl << file << std::endl << "-------------" << std::endl;
-
     MemoryManager::MemoryBlock file_data = Filesystem::FileIO::ReadFile(file);
     antlr4::ANTLRInputStream input_stream(
         static_cast<const char*>(file_data.data), file_data.size);

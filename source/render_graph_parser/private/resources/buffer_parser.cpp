@@ -13,7 +13,7 @@ Buffer BufferParser::Parse(ParserContext& parser_context,
                                      context->resourceFormatDeclaration()
                                          ->resourceFormatValue()))
                                : ResourceFormat::None),
-                .size_name = Antlr4Helper::GetID(
+                .size_name = Antlr4Helper::GetTempID(
                     parser_context, context->sizeDeclaration(), false)};
 }
 

@@ -26,7 +26,7 @@ class Thread {
   void (*entrypoint_)(Thread*, void*){nullptr};
   void* user_parameters_{nullptr};
 
-#if defined(_WIN32) || defined(WIN32) 
+#if defined(_WIN32) || defined(WIN32)
   static DWORD WINAPI EntryPointWrapperStatic(void* parameters);
   HANDLE thread_{nullptr};
   DWORD thread_id_{0};

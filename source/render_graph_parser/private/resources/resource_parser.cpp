@@ -11,12 +11,12 @@
 namespace BoolkaEngine::RenderGraphParser {
 void ResourceParser::Parse(RenderGraph& graph, ParserContext& parser_context,
                            render_graph_parser::ResourceContext* context) {
-  std::string name = context->ID()->getText();
   auto* result = graph.allocator.Emplace<Resource>(
       ParseObjectBody(parser_context, context->resourceBody()));
 
-  graph.resources.emplace(graph.allocator.DuplicateString(name.c_str()),
-                          result);
+  result->name = graph.allocator.DuplicateString(context->ID()->getText());
+
+  graph.resources.emplace(result->name, result);
 }
 
 ResourceType ResourceParser::ParseType(

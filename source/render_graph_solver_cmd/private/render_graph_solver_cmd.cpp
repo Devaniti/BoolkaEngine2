@@ -32,4 +32,11 @@ int main(int argc, char* argv[]) {
     std::cout << var.first << " - " << static_cast<int>(var.second->type)
               << std::endl;
   }
+
+  std::cout << "Shaders" << std::endl;
+  for (const auto& var : graph->shaders) {
+    std::cout << var.first << " - " << static_cast<int>(var.second->type) << " "
+              << var.second->filename << " " << var.second->entrypoint
+              << std::endl;
+  }
 }

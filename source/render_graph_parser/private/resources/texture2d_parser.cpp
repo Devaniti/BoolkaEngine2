@@ -12,11 +12,11 @@ Texture2D Texture2DParser::Parse(
   return Texture2D{
       .format = ToResourceFormat(Antlr4Helper::GetToken(
           context->resourceFormatDeclaration()->resourceFormatValue())),
-      .resolution_name = Antlr4Helper::GetID(
+      .resolution_name = Antlr4Helper::GetTempID(
           parser_context, context->resolutionDeclaration(), false),
-      .optimized_clear_value_name = Antlr4Helper::GetID(
+      .optimized_clear_value_name = Antlr4Helper::GetTempID(
           parser_context, context->optimizedClearValueDeclaration()),
-      .slice_count_name = Antlr4Helper::GetID(
+      .slice_count_name = Antlr4Helper::GetTempID(
           parser_context, context->sliceCountDeclaration())};
 }
 
