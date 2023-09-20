@@ -1,19 +1,17 @@
-Shader MS TestTriangleMS {
+Shader TestTriangleMS {
+    Type MS
     Filename TestTriangle.hlsl
     Entrypoint MS_TestTriangle
 }
 
-Shader PS TestTrianglePS {
+Shader TestTrianglePS {
+    Type PS
     Filename TestTriangle.hlsl
     Entrypoint PS_TestTriangle
 }
 
-Shader MS TonemappingMS {
-    Filename Tonemapping.hlsl
-    Entrypoint MS_Tonemapping
-}
-
-Shader PS TonemappingPS {
-    Filename Tonemapping.hlsl
-    Entrypoint PS_Tonemapping
+Shader TestComputeCS {
+    Type CS
+    Filename TestCompute.hlsl
+    Entrypoint CS_TestCompute
 }

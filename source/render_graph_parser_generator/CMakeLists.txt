@@ -1,6 +1,4 @@
-set(SourceList 
-    grammar/render_graph_lexer.g4
-    grammar/render_graph_parser.g4)
+file(GLOB_RECURSE SourceList CONFIGURE_DEPENDS grammar/*.g4)
 
 antlr_target(RenderGraphParserGeneratorLexer grammar/render_graph_lexer.g4 LEXER
     )

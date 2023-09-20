@@ -41,7 +41,7 @@ Resource ResourceParser::ParseObjectBody(
     ParserContext& parser_context,
     render_graph_parser::ResourceBodyContext* body) {
   Resource result;
-  result.type = ParseType(body->typeDeclaration()->resourceTypeValue());
+  result.type = ParseType(body->resourceTypeDeclaration()->resourceTypeValue());
 
   switch (result.type) {
     case ResourceType::Buffer:

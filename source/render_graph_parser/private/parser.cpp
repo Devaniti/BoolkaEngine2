@@ -77,8 +77,21 @@ void Parser::ParseFiles(const char* source_folder, RenderGraph* graph,
         static_cast<const char*>(file_data.data), file_data.size);
     render_graph_lexer lexer(&input_stream);
     antlr4::CommonTokenStream token_stream(&lexer);
+    token_stream.fill();
+    size_t errorCount = lexer.getNumberOfSyntaxErrors();
+    if (errorCount > 0) {
+      std::cout << "Lexer errors: " << errorCount << std::endl;
+      return;
+    }
+
     render_graph_parser parser(&token_stream);
     antlr4::tree::ParseTree* tree = parser.main();
+    errorCount = parser.getNumberOfSyntaxErrors();
+
+    if (errorCount > 0) {
+      std::cout << "Parser errors: " << errorCount << std::endl;
+      return;
+    }
 
     ParserVisitor visitor(*graph, parser_context);
     visitor.visit(tree);

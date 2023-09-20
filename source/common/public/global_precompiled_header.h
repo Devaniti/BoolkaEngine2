@@ -28,6 +28,12 @@
 #ifdef CONST
 #undef CONST
 #endif
+#ifdef TRUE
+#undef TRUE
+#endif
+#ifdef FALSE
+#undef FALSE
+#endif
 #elif __unix__
 #include <pthread.h>
 #include <sched.h>

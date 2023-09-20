@@ -24,6 +24,8 @@ get_filename_component(AbsoluteInputFile "${InputFile}" ABSOLUTE)
 set(ANTLR_${Name}_INPUT ${AbsoluteInputFile})
 
 get_filename_component(ANTLR_INPUT ${InputFile} NAME_WE)
+get_filename_component(INPUT_DIRECTORY ${InputFile} DIRECTORY)
+file(GLOB_RECURSE SourceList CONFIGURE_DEPENDS ${INPUT_DIRECTORY}/*.g4)
 
 if(ANTLR_TARGET_OUTPUT_DIRECTORY)
     set(ANTLR_${Name}_OUTPUT_DIR ${ANTLR_TARGET_OUTPUT_DIRECTORY})
@@ -96,6 +98,7 @@ add_custom_command(
             -Dlanguage=Cpp
             ${ANTLR_TARGET_COMPILE_FLAGS}
     DEPENDS ${InputFile}
+            ${SourceList}
             ${ANTLR_TARGET_DEPENDS}
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     COMMENT "Building ${Name} with ANTLR")
